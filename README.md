@@ -46,15 +46,6 @@ Project files are -
 3. sql_queries.py - has the sql queries to create, copy and insert data in each stage of etl process
 4. dwh.cfg - contains links and credentials that are called using configparser and psycopg2.
 
-   
-I first started with writing the codes in sql_queries.py file and calling it from create_tables.py file. I then created our Redshift cluster and necessary AWS ifrastructure (i.e. IAM role)
-
-the project files are 
-
-I then ran queries to copy data from S3 buckets to the staging tables. For some reason, my code was having trouble copying the staging_songs table using Python script even though stl_load_errors table in Redshift did not show any error. Finally, I had to initiate that copy command directly from the query editor with TRANCATECOLUMNS, BLANKSASNULL, and EMPTYASNULL. However, this was only when I tried to copy the entire SONG_DATA bucket, when I loaded a single folder "s3://udacity-dend/song_data/A/A/B/" my script was able to copy the staging_songs table fine.
-
-I then ran the insert queries to laod the Fact and dimension tables. Below are some screenshots of the test queries I ran to quality check - 
-
 <img width="717" alt="image" src="https://github.com/user-attachments/assets/a5e65abd-11c9-4596-ac0c-1ba73b936638" />
 <img width="717" alt="image" src="https://github.com/user-attachments/assets/b317b466-a35e-4dc5-9744-4168566c1054" />
 <img width="673" alt="image" src="https://github.com/user-attachments/assets/47c66673-4459-4d71-9304-6ca50be43490" />
